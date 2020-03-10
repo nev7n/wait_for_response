@@ -8,9 +8,9 @@ ENV GO111MODULE=on
 
 # Copy `go.mod` for definitions and `go.sum` to invalidate the next layer
 # in case of a change in the dependencies
-COPY go.mod go.sum ./
+#COPY go.mod go.sum ./
 # Download dependencies
-RUN go mod download
+#RUN go mod download
 
 COPY ./ ./
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go test ./...
