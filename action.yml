@@ -1,0 +1,32 @@
+# action.yml
+name: 'Wait For Response'
+description: 'Wait for response code from a URL with timeout'
+inputs:
+    url:
+        description: 'URL to poll'
+        required: false
+        default: 'http://localhost/'
+    responseCode:
+        description: 'Response code to wait for'
+        required: false
+        default: '200'
+    timeout:
+        description: 'Timeout before giving up in ms'
+        required: false
+        default: '30000'
+    interval:
+        description: 'Interval between polling in ms'
+        required: false
+        default: 200
+outputs:
+  result:
+    description: '0 if response code returned within timeout, otherwise 1'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    
+    - -url=${{ inputs.url }}
+    - -code=${{ inputs.responseCode }}
+    - -timeout=${{ inputs.timeout }}
+    - -interval=${{ inputs.interval }}
