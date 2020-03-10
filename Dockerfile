@@ -19,6 +19,6 @@ RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -installsuffix cgo -o wait
 # Create a minimal docker container and copy the app into it
 FROM alpine:latest
 RUN apk --no-cache add ca-certificates
-WORKDIR /root/
+WORKDIR /app
 COPY --from=builder /app/wait_for_response .
 CMD ["./wait_for_response"]
