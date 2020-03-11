@@ -23,4 +23,4 @@ WORKDIR /app
 COPY --from=builder /app/wait_for_response .
 COPY entrypoint.sh .
 RUN chmod +x entrypoint.sh
-ENTRYPOINT ["./entrypoint.sh"]
+ENTRYPOINT ["/app/entrypoint.sh"]
