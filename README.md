@@ -24,7 +24,7 @@ Interval between polling in ms. Default `"200"`
 
 ## Example usage
 ```
-uses: actions/wait-for-response@v1
+uses: nev7n/wait_for_response@v1
 with:
   url: 'http://localhost:8081/'
   responseCode: 200
