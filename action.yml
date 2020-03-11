@@ -1,5 +1,9 @@
 # action.yml
 name: 'Wait For Response'
+author: 'Justin Knight'
+branding:
+    icon: 'clock'  
+    color: 'blue'
 description: 'Wait for response code from a URL with timeout'
 inputs:
     url:
