@@ -25,7 +25,6 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - /app/wait_for_response
     - ${{ inputs.url }}
     - ${{ inputs.responseCode }}
     - ${{ inputs.timeout }}
