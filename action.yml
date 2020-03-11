@@ -26,7 +26,7 @@ runs:
   image: 'Dockerfile'
   args:
     - /app/wait_for_response
-    - -url=${{ inputs.url }}
-    - -code=${{ inputs.responseCode }}
-    - -timeout=${{ inputs.timeout }}
-    - -interval=${{ inputs.interval }}
+    - ${{ inputs.url }}
+    - ${{ inputs.responseCode }}
+    - ${{ inputs.timeout }}
+    - ${{ inputs.interval }}
