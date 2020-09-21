@@ -22,6 +22,10 @@ inputs:
         description: 'Interval between polling in ms'
         required: false
         default: 200
+    sleep:
+        description: 'Sleep before initial request in ms'
+        required: false
+        default: 0
 outputs:
   result:
     description: '0 if response code returned within timeout, otherwise 1'
@@ -33,3 +37,4 @@ runs:
     - ${{ inputs.responseCode }}
     - ${{ inputs.timeout }}
     - ${{ inputs.interval }}
+    - ${{ inputs.sleep }}
