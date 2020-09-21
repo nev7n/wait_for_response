@@ -19,7 +19,7 @@ func main() {
 	flag.Parse()
 
 	fmt.Printf("Version 1.2.0\n")
-	fmt.Printf("Sleeping for %d ms", *sleep)
+	fmt.Printf("Sleeping for %d ms\n", *sleep)
 	sleepDuration2 := time.Duration(*sleep) * time.Millisecond
 	time.Sleep(sleepDuration2)
 	fmt.Printf("Polling URL `%s` for response code %d for up to %d ms at %d ms intervals\n", *url, *responseCode, *timeout, *interval)
