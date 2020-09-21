@@ -20,7 +20,10 @@ Timeout before giving up in milliseconds. Default `"30000"`
 ### `interval`
 
 Interval between polling in ms. Default `"200"`
-        default: 200
+
+### `sleep`
+
+Amount to sleep in ms before initial request. Default `"0"`
 
 ## Example usage
 ```
@@ -30,4 +33,5 @@ with:
   responseCode: 200
   timeout: 2000
   interval: 500
+  sleep: 2000
 ```
