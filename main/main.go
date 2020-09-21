@@ -17,6 +17,7 @@ func main() {
 	var localhost = flag.String("localhost", "", "Ip address to use for localhost")
 	flag.Parse()
 
+	fmt.Printf("Version 1.1.0\n")
 	fmt.Printf("Polling URL `%s` for response code %d for up to %d ms at %d ms intervals\n", *url, *responseCode, *timeout, *interval)
 	startTime := time.Now()
 	timeoutDuration := time.Duration(*timeout) * time.Millisecond
@@ -26,7 +27,7 @@ func main() {
 		*url = strings.ReplaceAll(*url, "localhost", *localhost)
 	}
 	for {
-		res, err := http.Head(*url)
+		res, err := http.Get(*url)
 		if err == nil && res.StatusCode == *responseCode {
 			fmt.Printf("Response header: %v", res)
 			os.Exit(0)
