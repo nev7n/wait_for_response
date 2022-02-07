@@ -1,6 +1,6 @@
 # Wait For Response docker action
 
-This action makes a HEAD requests to a given URL until the required response code is retrieved or the timeout is met.  Initially created to allow test containers to startup before executing tests against them.
+This action makes HEAD requests to a given URL until the required response code is retrieved or the timeout is met.  Initially created to allow test containers to startup before executing tests against them.
 
 ## Inputs
 
