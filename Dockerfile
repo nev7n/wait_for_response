@@ -1,5 +1,7 @@
 # Build the app
-FROM golang:1.13 as builder
+FROM --platform=$BUILDPLATFORM golang:1.26.1-trixie AS builder
+ARG TARGETOS
+ARG TARGETARCH
 WORKDIR /app
 # Enable go modules even inside GOPATH
 ENV GO111MODULE=on
@@ -13,14 +15,15 @@ ENV GO111MODULE=on
 #RUN go mod download
 
 COPY ./ ./
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go test ./...
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -installsuffix cgo -o wait_for_response /app/main/main.go
+RUN CGO_ENABLED=0 go test ./...
+RUN CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -a -installsuffix cgo -o wait_for_response /app/main/main.go
 
 # Create a minimal docker container and copy the app into it
-FROM alpine:latest
-RUN apk --no-cache add ca-certificates
+FROM debian:13.4-trixie-slim
+RUN apt update && apt install -y ca-certificates
+
+USER nobody:nobody
 WORKDIR /app
-COPY --from=builder /app/wait_for_response .
-COPY entrypoint.sh .
-RUN chmod +x entrypoint.sh
-ENTRYPOINT ["/app/entrypoint.sh"]
+COPY --from=builder --chmod=0755 /app/wait_for_response .
+
+ENTRYPOINT ["/app/wait_for_response"]
