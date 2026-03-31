@@ -13,6 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+    env:
+      DOCKER_BUILD_RECORD_UPLOAD: false
     strategy:
       matrix:
         platform:
@@ -39,3 +41,36 @@ jobs:
           platforms: ${{ matrix.platform }}
           build-args: VERSION=ci
           push: false
+
+  test:
+    needs: build-docker
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      DOCKER_BUILD_RECORD_UPLOAD: false
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - uses: docker/build-push-action@v7
+        with:
+          context: .
+          file: Dockerfile
+          platforms: linux/amd64
+          build-args: VERSION=e2e
+          tags: wait_for_response:e2e
+          load: true
+          push: false
+
+      - run: docker image ls
+
+      - name: replace image
+        run: |
+          yq e -i '.runs.image = "docker://wait_for_response:e2e"' action.yml
+
+      - uses: ./
+        with:
+          url: https://www.github.com/
+          responseCode: 200
