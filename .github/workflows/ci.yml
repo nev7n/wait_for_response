@@ -37,4 +37,5 @@ jobs:
           context: ${{ matrix.dockerfile.context }}
           file: ${{ matrix.dockerfile.context }}/${{ matrix.dockerfile.file }}
           platforms: ${{ matrix.platform }}
+          build-args: VERSION=ci
           push: false

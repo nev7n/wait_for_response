@@ -9,6 +9,10 @@ import (
 	"time"
 )
 
+var (
+	version = "dev"
+)
+
 func main() {
 	var url = flag.String("url", "http://localhost/", "URL to poll")
 	var responseCode = flag.Int("code", 200, "Response code to wait for")
