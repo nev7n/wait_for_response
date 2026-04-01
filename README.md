@@ -8,7 +8,6 @@ This action makes HEAD requests to a given URL until the required response code 
 
 The URL to poll. Default `"http://localhost/"`
 
-
 ### `responseCode`
 
 Response code to wait for. Default `"200"`
@@ -21,14 +20,21 @@ Timeout before giving up in milliseconds. Default `"30000"`
 
 Interval between polling in ms. Default `"1000"`
 
+### `username` / `password`
+
+For HTTP Basic Auth. Default: _empty_ 
+
 ## Example usage
-```
-uses: nev7n/wait_for_response@v1
-with:
-  url: 'http://localhost:8081/'
-  responseCode: 200
-  timeout: 2000
-  interval: 500
+
+```yaml
+- uses: nev7n/wait_for_response@v1
+  with:
+    url: 'http://localhost:8081/'
+    responseCode: 200
+    timeout: 2000
+    interval: 500
+    username: ${{ secrets.BA_USERNAME }}
+    password: ${{ secrets.BA_PASSWORD }}
 ```
 
 ## Development
