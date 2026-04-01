@@ -21,10 +21,11 @@ RUN CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -a -ldflags="-X
 
 # Create a minimal docker container and copy the app into it
 FROM debian:13.4-slim
-RUN apt update && apt install -y ca-certificates
+RUN apt update && apt install -y ca-certificates iproute2
 
 USER 65534:65534
 WORKDIR /app
 COPY --from=builder --chmod=0755 /app/wait_for_response .
+COPY --chmod=0755 entrypoint.sh .
 
-ENTRYPOINT ["/app/wait_for_response"]
+ENTRYPOINT ["/app/entrypoint.sh"]

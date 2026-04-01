@@ -27,9 +27,9 @@ outputs:
     description: '0 if response code returned within timeout, otherwise 1'
 runs:
   using: "docker"
-  image: "docker://ghcr.io/nev7n/wait_for_response:1.1.2"
+  image: "docker://ghcr.io/nev7n/wait_for_response:1.2.0"
   args:
-    - -url=${{ inputs.url }}
-    - -code=${{ inputs.responseCode }}
-    - -timeout=${{ inputs.timeout }}
-    - -interval=${{ inputs.interval }}
+    - ${{ inputs.url }}
+    - ${{ inputs.responseCode }}
+    - ${{ inputs.timeout }}
+    - ${{ inputs.interval }}
