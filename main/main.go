@@ -18,8 +18,8 @@ func main() {
 	var (
 		url          = flag.String("url", "http://localhost/", "URL to poll")
 		responseCode = flag.Int("code", 200, "Response code to wait for")
-		timeout      = flag.Int("timeout", 2000, "Timeout before giving up in ms")
-		interval     = flag.Int("interval", 200, "Interval between polling in ms")
+		timeout      = flag.Int("timeout", 30000, "Timeout before giving up in ms")
+		interval     = flag.Int("interval", 1000, "Interval between polling in ms")
 		localhost    = flag.String("localhost", "", "Ip address to use for localhost")
 	)
 

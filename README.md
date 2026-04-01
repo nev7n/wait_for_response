@@ -19,8 +19,7 @@ Timeout before giving up in milliseconds. Default `"30000"`
 
 ### `interval`
 
-Interval between polling in ms. Default `"200"`
-        default: 200
+Interval between polling in ms. Default `"1000"`
 
 ## Example usage
 ```

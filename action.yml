@@ -21,7 +21,7 @@ inputs:
     interval:
         description: 'Interval between polling in ms'
         required: false
-        default: 200
+        default: '1000'
 outputs:
   result:
     description: '0 if response code returned within timeout, otherwise 1'
