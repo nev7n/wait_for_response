@@ -31,3 +31,7 @@ with:
   timeout: 2000
   interval: 500
 ```
+
+## Docs
+
+- for the release procedure, see [./RELEASE.md]
