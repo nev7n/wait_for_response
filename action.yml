@@ -22,6 +22,14 @@ inputs:
         description: 'Interval between polling in ms'
         required: false
         default: '1000'
+    username:
+        description: 'HTTP Basic Auth username'
+        required: false
+        default: ''
+    password:
+        description: 'HTTP Basic Auth password'
+        required: false
+        default: ''
 outputs:
   result:
     description: '0 if response code returned within timeout, otherwise 1'
@@ -33,3 +41,5 @@ runs:
     - -code=${{ inputs.responseCode }}
     - -timeout=${{ inputs.timeout }}
     - -interval=${{ inputs.interval }}
+    - -username=${{ inputs.username }}
+    - -password=${{ inputs.password }}
