@@ -31,6 +31,6 @@ with:
   interval: 500
 ```
 
-## Docs
+## Development
 
-- for the release procedure, see [./RELEASE.md]
+For the release procedure, see [RELEASE.md](./RELEASE.md)
